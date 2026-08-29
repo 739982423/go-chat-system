@@ -1,21 +1,90 @@
 # go-chat-system
-海量用户通讯系统（大概就算个聊天室，用Go实现）
- 
-### 该仓库为所有源代码，包含：
-1. server端代码（server文件夹）
-2. client端代码（client文件夹）
-3. 一些共用的操作函数，传输格式定义（commom文件夹）
 
-`go.sum`和`go.mod`为golang依赖包管理使用到的文件。使用的Golang版本：1.17。
+A chat system implemented in **Go**. In essence, it can be considered a simple chat room application.
 
-### 直接使用：
-因为服务器端已经部署在阿里云服务器上了，所以可以直接执行目录下的`client.exe`进行聊天室登录。     
-服务器的部署使用docker容器进行部署(golang1.17 + redis6.26)，对应的镜像也公开在阿里云。    
-拉取指令为：```docker pull registry.cn-beijing.aliyuncs.com/pj_project/go_project:01```
+## Project Overview
 
+This repository contains the complete source code of the project, including:
 
-### 自己编译-使用方法：
-1. 安装golang的环境：linux下解压官方的.tar.gz文件，将go的解压目录下的/bin文件夹添加入环境变量，再执行source即可
-2. 将该项目所有文件放入一个名为finalProject的文件夹内
-3. 之后finalProject目录下执行```go build -o client finalProject/client/main```即可对客户端进行编译，将生成client的可执行程序。   
-服务器端同理，需要将目录的client改为server。
+1. **Server-side code** — located in the `server` directory.
+2. **Client-side code** — located in the `client` directory.
+3. **Shared utilities and message format definitions** — located in the `commom` directory.
+
+The `go.mod` and `go.sum` files are used for **Go dependency management**.
+
+* **Go version:** `1.17`
+
+## Quick Start
+
+The server has already been deployed on an **Alibaba Cloud ECS instance**, so you can directly run `client.exe` in the project directory to connect to the chat server.
+
+The server is deployed using a **Docker container** with the following environment:
+
+* Go `1.17`
+* Redis `6.26`
+
+The corresponding Docker image is also publicly available on Alibaba Cloud Container Registry.
+
+Pull the Docker image with:
+
+```bash
+docker pull registry.cn-beijing.aliyuncs.com/pj_project/go_project:01
+```
+
+After obtaining the image, the server can be deployed using the corresponding Docker configuration.
+
+## Build from Source
+
+If you prefer to compile the project yourself, follow these steps.
+
+### 1. Install Go
+
+Install **Go 1.17** on your system.
+
+On Linux, you can download the official `.tar.gz` archive, extract it, and add the `bin` directory inside the extracted Go directory to your `PATH` environment variable.
+
+For example:
+
+```bash
+export PATH=$PATH:/path/to/go/bin
+source ~/.bashrc
+```
+
+### 2. Prepare the Project Directory
+
+Place all project files inside a directory named:
+
+```text
+finalProject
+```
+
+The resulting directory structure should be similar to:
+
+```text
+finalProject/
+├── client/
+├── server/
+├── commom/
+├── go.mod
+└── go.sum
+```
+
+### 3. Build the Client
+
+From the `finalProject` directory, run:
+
+```bash
+go build -o client finalProject/client/main
+```
+
+This will compile the client and generate an executable named `client`.
+
+### 4. Build the Server
+
+The server can be compiled in the same way. Replace the `client` path with `server`:
+
+```bash
+go build -o server finalProject/server/main
+```
+
+This will generate the server executable named `server`.
