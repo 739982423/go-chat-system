@@ -1,4 +1,4 @@
-# Massive-user-communication-system
+# go-chat-system
 海量用户通讯系统（大概就算个聊天室，用Go实现）
  
 ### 该仓库为所有源代码，包含：
